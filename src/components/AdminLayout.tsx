@@ -1,4 +1,5 @@
 import {
+  ArrowLeft,
   CalendarDays,
   LayoutDashboard,
   LogOut,
@@ -6,7 +7,7 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { api } from "@/lib/api";
 import { cn, initials } from "@/lib/utils";
 
@@ -62,6 +63,13 @@ export function AdminLayout() {
             <br />
             資訊科技教育領袖協會
           </p>
+          <Link
+            to="/"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Events
+          </Link>
         </div>
         <nav className="flex-1 space-y-1 p-3">
           {links.map((link) => (
@@ -104,6 +112,14 @@ export function AdminLayout() {
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-20 flex items-center justify-between gap-3 border-b bg-white/90 px-4 py-3 backdrop-blur-xl lg:hidden">
           <div className="flex min-w-0 items-center gap-3">
+            <Link
+              to="/"
+              className="rounded-lg border px-2.5 py-2 text-primary"
+              title="Back to Events"
+              aria-label="Back to Events"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
             <img src="/aitle-logo.png" alt="AiTLE" className="h-7 w-auto" />
             <div className="min-w-0">
               <div className="truncate text-sm font-semibold">Admin Console</div>

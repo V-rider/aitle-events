@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { CertificateView } from "@/components/CertificateView";
+import {
+  CERTIFICATE_DESIGN_WIDTH,
+  CertificateView,
+} from "@/components/CertificateView";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -63,13 +66,13 @@ export function AdminSettings() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-children space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Settings</h1>
         <p className="text-sm text-muted-foreground">Manage participant notification channels.</p>
       </div>
 
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <CardTitle>Registration Notifications</CardTitle>
@@ -141,7 +144,7 @@ export function AdminSettings() {
         </CardContent>
       </Card>
 
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader>
           <CardTitle>Send Test Message</CardTitle>
         </CardHeader>
@@ -202,7 +205,7 @@ export function AdminSettings() {
         </CardContent>
       </Card>
 
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader>
           <CardTitle>Certificate Template</CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -277,24 +280,39 @@ export function AdminSettings() {
               </Button>
             </div>
           </div>
-          <div className="overflow-x-auto">
+          <div>
             <p className="mb-2 text-sm font-medium">Preview</p>
-            <div className="min-w-[320px]">
-              <CertificateView
-                compact
-                name="Lee Lok San"
-                eventTitle="Sharing for AiTLE AI for All Subject & Admin Summit"
-                dateLabel="August 29th, 2026 9:30 AM – 5:00 PM"
-                location="Ying Wa College"
-                registrationId="AB12CD34"
-                template={settings.certificateTemplate}
-              />
+            {/*
+              Scale the full design-width certificate uniformly so preview layout
+              matches /certificate/:id (no compact padding / aspect divergence).
+            */}
+            <div
+              className="@container relative w-full overflow-hidden"
+              style={{ aspectRatio: "1.414" }}
+            >
+              <div
+                className="origin-top-left"
+                style={{
+                  width: CERTIFICATE_DESIGN_WIDTH,
+                  // length/length → unitless number (scale() rejects length units)
+                  transform: `scale(calc(100cqw / ${CERTIFICATE_DESIGN_WIDTH}px))`,
+                }}
+              >
+                <CertificateView
+                  name="Lee Lok San"
+                  eventTitle="Sharing for AiTLE AI for All Subject & Admin Summit"
+                  dateLabel="August 29th, 2026 9:30 AM – 5:00 PM"
+                  location="Ying Wa College"
+                  registrationId="AB12CD34"
+                  template={settings.certificateTemplate}
+                />
+              </div>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader>
           <CardTitle>How to set up notifications</CardTitle>
         </CardHeader>

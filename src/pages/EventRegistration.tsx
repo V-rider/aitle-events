@@ -32,10 +32,10 @@ export function EventRegistration() {
 
   if (error === "not_found") {
     return (
-      <PublicShell>
+      <PublicShell animate={false}>
         <div className="container mx-auto max-w-xl px-4 py-20 text-center">
-          <h1 className="text-2xl font-semibold">Event not found</h1>
-          <Link to="/" className="mt-3 inline-block text-sm text-primary">
+          <h1 className="animate-fade-up text-2xl font-semibold">Event not found</h1>
+          <Link to="/" className="animate-fade-up-delay mt-3 inline-block text-sm text-primary">
             Back to Events
           </Link>
         </div>
@@ -57,21 +57,30 @@ export function EventRegistration() {
 
   if (done) {
     return (
-      <PublicShell>
+      <PublicShell animate={false}>
         <div className="container mx-auto max-w-xl px-4 py-14 text-center sm:py-20">
-          <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50">
+          <div className="animate-fade-up mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50">
             <CheckCircle2 className="h-9 w-9 text-emerald-600" />
           </div>
-          <h1 className="text-2xl font-semibold sm:text-3xl">Registration confirmed</h1>
-          <p className="mt-3 text-muted-foreground">
+          <h1 className="animate-fade-up-delay text-2xl font-semibold sm:text-3xl">
+            Registration confirmed
+          </h1>
+          <p className="animate-fade-up-delay-2 mt-3 text-muted-foreground">
             Thanks, {done.name}. Your registration ID is{" "}
             <span className="font-mono font-medium text-foreground">#{done.registrationId}</span>
           </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Button className="h-11" onClick={() => navigate("/attendance-lookup")}>
+          <div className="animate-fade-up-delay-3 mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button
+              className="h-11 transition duration-200 hover:-translate-y-0.5"
+              onClick={() => navigate("/attendance-lookup")}
+            >
               Check My Attendance
             </Button>
-            <Button variant="outline" className="h-11" onClick={() => navigate("/")}>
+            <Button
+              variant="outline"
+              className="h-11 transition duration-200 hover:-translate-y-0.5"
+              onClick={() => navigate("/")}
+            >
               Browse More Events
             </Button>
           </div>
@@ -98,19 +107,22 @@ export function EventRegistration() {
   }
 
   return (
-    <PublicShell>
+    <PublicShell animate={false}>
       <div className="border-b bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white">
         <div className="container mx-auto max-w-2xl px-4 py-8 sm:py-12">
-          <Link to="/" className="text-sm text-white/70 hover:text-white">
+          <Link
+            to="/"
+            className="animate-fade-up text-sm text-white/70 transition-colors hover:text-white"
+          >
             ← All events
           </Link>
           <h1
-            className="mt-4 text-2xl font-bold leading-tight tracking-tight sm:text-4xl"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="animate-fade-up-delay mt-4 text-2xl font-bold leading-tight tracking-tight sm:text-4xl"
+            style={{ fontFamily: "var(--font-serif)" }}
           >
             {event.title}
           </h1>
-          <div className="mt-4 flex flex-col gap-2 text-sm text-white/75 sm:flex-row sm:flex-wrap sm:gap-x-5">
+          <div className="animate-fade-up-delay-2 mt-4 flex flex-col gap-2 text-sm text-white/75 sm:flex-row sm:flex-wrap sm:gap-x-5">
             <span className="inline-flex items-center gap-1.5">
               <Calendar className="h-4 w-4 shrink-0" />
               {event.dateLabel}
@@ -127,13 +139,13 @@ export function EventRegistration() {
 
       <div className="container mx-auto max-w-2xl px-4 py-6 sm:py-10">
         {event.description ? (
-          <p className="mb-6 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="animate-fade-up-delay-2 mb-6 whitespace-pre-wrap text-sm leading-relaxed text-muted-foreground sm:text-base">
             {event.description}
           </p>
         ) : null}
 
         {passed ? (
-          <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
+          <div className="animate-fade-up-delay-3 motion-card rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
             <h2 className="font-semibold">This event has already passed</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Registration is no longer available.
@@ -143,7 +155,7 @@ export function EventRegistration() {
             </Link>
           </div>
         ) : (
-          <div className="rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
+          <div className="animate-fade-up-delay-3 motion-card rounded-2xl border bg-white p-5 shadow-sm sm:p-6">
             <h2 className="text-lg font-semibold">Register</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               No account required. Fill in your details below.
@@ -215,7 +227,11 @@ export function EventRegistration() {
                 </div>
               ))}
               {error ? <p className="text-sm text-destructive">{error}</p> : null}
-              <Button type="submit" disabled={submitting} className="h-11 w-full">
+              <Button
+                type="submit"
+                disabled={submitting}
+                className="h-11 w-full transition duration-200 hover:-translate-y-0.5"
+              >
                 {submitting ? "Submitting…" : "Register"}
               </Button>
             </form>

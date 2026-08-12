@@ -39,18 +39,18 @@ export function AdminLogin() {
   }
 
   return (
-    <PublicShell className="bg-gradient-to-b from-navy-950 via-navy-900 to-background">
+    <PublicShell animate={false} className="bg-gradient-to-b from-navy-950 via-navy-900 to-background">
       <div className="flex justify-center px-4 py-10 sm:py-16">
-        <div className="w-full max-w-md rounded-2xl border bg-white p-6 shadow-xl sm:p-8">
-          <img src="/aitle-logo.png" alt="AiTLE" className="mb-4 h-8 w-auto" />
-          <h1 className="text-2xl font-bold tracking-tight">Admin sign-in</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
+        <div className="motion-card w-full max-w-md rounded-2xl border bg-white p-6 shadow-xl sm:p-8">
+          <img src="/aitle-logo.png" alt="AiTLE" className="animate-fade-up mb-4 h-8 w-auto" />
+          <h1 className="animate-fade-up-delay text-2xl font-bold tracking-tight">Admin sign-in</h1>
+          <p className="animate-fade-up-delay-2 mt-1 text-sm text-muted-foreground">
             Manage events, attendance, and certificates for AiTLE.
           </p>
-          <div className="mt-6 space-y-4">
+          <div className="animate-fade-up-delay-3 mt-6 space-y-4">
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
             {googleConfigured ? (
-              <Button className="h-11 w-full" asChild>
+              <Button className="h-11 w-full transition duration-200 hover:-translate-y-0.5" asChild>
                 <a href="/api/auth/google">Continue with Google</a>
               </Button>
             ) : (
@@ -70,7 +70,11 @@ export function AdminLogin() {
                     placeholder="jasperlee016@gmail.com"
                   />
                 </div>
-                <Button type="submit" className="h-11 w-full" disabled={loading}>
+                <Button
+                  type="submit"
+                  className="h-11 w-full transition duration-200 hover:-translate-y-0.5"
+                  disabled={loading}
+                >
                   {loading ? "Signing in…" : "Sign in"}
                 </Button>
               </form>

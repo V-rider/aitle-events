@@ -50,7 +50,7 @@ export function AdminEventDetail() {
   if (!data) return <div className="text-muted-foreground">Loading…</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-children space-y-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
         <div className="min-w-0">
           <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{data.event.title}</h1>
@@ -79,14 +79,14 @@ export function AdminEventDetail() {
           ["Attended", data.stats.attended],
           ["Certified", data.stats.certified],
         ].map(([label, value]) => (
-          <div key={label as string} className="rounded-2xl border bg-white p-3 shadow-sm sm:p-5">
+          <div key={label as string} className="motion-card rounded-2xl border bg-white p-3 shadow-sm sm:p-5">
             <p className="text-[11px] text-muted-foreground sm:text-sm">{label}</p>
             <p className="mt-1 text-xl font-bold sm:text-2xl">{value}</p>
           </div>
         ))}
       </div>
 
-      <section className="rounded-2xl border bg-white shadow-sm">
+      <section className="motion-card rounded-2xl border bg-white shadow-sm">
         <div className="border-b px-4 py-4 sm:px-6">
           <h2 className="text-lg font-semibold">Registrations</h2>
         </div>

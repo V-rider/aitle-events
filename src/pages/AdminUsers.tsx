@@ -54,14 +54,14 @@ export function AdminUsers() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-children space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Users</h1>
         <p className="text-sm text-muted-foreground">
           Manage who has admin access to the AiTLE events console
         </p>
       </div>
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader>
           <CardTitle>All Users</CardTitle>
         </CardHeader>
@@ -178,7 +178,7 @@ export function AdminUsers() {
         </CardContent>
       </Card>
 
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader>
           <CardTitle>Invite Admin by Email</CardTitle>
           <p className="text-sm text-muted-foreground">

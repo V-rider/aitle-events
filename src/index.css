@@ -48,7 +48,7 @@ body {
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -76,16 +76,99 @@ body {
   }
 }
 
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fade-up {
-  animation: fade-up 0.55s ease-out both;
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .animate-fade-up-delay {
-  animation: fade-up 0.7s ease-out 0.12s both;
+  animation: fade-up 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .animate-fade-up-delay-2 {
-  animation: fade-up 0.75s ease-out 0.22s both;
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.animate-page-enter {
+  animation: page-enter 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stagger-children > * {
+  animation: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stagger-children > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.stagger-children > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger-children > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.stagger-children > *:nth-child(4) {
+  animation-delay: 0.22s;
+}
+.stagger-children > *:nth-child(5) {
+  animation-delay: 0.28s;
+}
+.stagger-children > *:nth-child(6) {
+  animation-delay: 0.34s;
+}
+.stagger-children > *:nth-child(7) {
+  animation-delay: 0.4s;
+}
+.stagger-children > *:nth-child(8) {
+  animation-delay: 0.46s;
+}
+
+.motion-card {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.motion-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 24px -12px rgb(15 47 107 / 0.18),
+    0 2px 6px rgb(15 23 42 / 0.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-fade-up-delay,
+  .animate-fade-up-delay-2,
+  .animate-fade-up-delay-3,
+  .animate-page-enter,
+  .stagger-children > *,
+  .hero-glow,
+  .hero-orb {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-card,
+  .motion-card:hover {
+    transition: none;
+    transform: none;
+  }
 }
 
 .hero-glow {

@@ -3,6 +3,7 @@ import { Download, Printer } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CertificateView } from "@/components/CertificateView";
+import { FadeIn, PageMotion } from "@/components/PageMotion";
 import { Button } from "@/components/ui/button";
 import type { CertificatePayload } from "@/lib/types";
 
@@ -38,7 +39,7 @@ export function Certificate() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center text-muted-foreground">
+      <div className="flex min-h-screen items-center justify-center text-muted-foreground">
         Loading certificate…
       </div>
     );
@@ -46,28 +47,28 @@ export function Certificate() {
 
   if (status === "missing") {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center p-8">
-          <img src="/aitle-logo.png" alt="AiTLE" className="h-8 mx-auto mb-4" />
+      <div className="flex min-h-screen items-center justify-center">
+        <PageMotion className="p-8 text-center">
+          <img src="/aitle-logo.png" alt="AiTLE" className="mx-auto mb-4 h-8" />
           <p className="font-medium">Certificate not found</p>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="mt-1 text-sm text-muted-foreground">
             This registration ID does not exist.
           </p>
-        </div>
+        </PageMotion>
       </div>
     );
   }
 
   if (status === "unavailable" && data) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center p-8 max-w-sm">
-          <p className="font-semibold text-lg">Certificate Not Available</p>
-          <p className="text-sm text-muted-foreground mt-2">
+      <div className="flex min-h-screen items-center justify-center">
+        <PageMotion className="max-w-sm p-8 text-center">
+          <p className="text-lg font-semibold">Certificate Not Available</p>
+          <p className="mt-2 text-sm text-muted-foreground">
             Your certificate for <strong>{data.eventTitle}</strong> will be available after
             attendance is confirmed.
           </p>
-        </div>
+        </PageMotion>
       </div>
     );
   }
@@ -76,12 +77,12 @@ export function Certificate() {
 
   return (
     <div className="flex min-h-dvh flex-col bg-slate-100">
-      <div className="no-print sticky top-0 z-20 flex flex-col gap-3 border-b bg-white/95 px-4 py-3 backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <div className="flex items-center gap-2">
-          <img src="/aitle-logo.png" alt="AiTLE" className="h-6 w-auto" />
-          <span className="text-sm font-medium">Certificate of Attendance</span>
+      <FadeIn className="no-print sticky top-0 z-20 flex flex-col gap-3 border-b bg-white/95 px-4 py-3 backdrop-blur sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+        <div className="flex min-w-0 items-center gap-2">
+          <img src="/aitle-logo.png" alt="AiTLE" className="h-6 w-auto shrink-0" />
+          <span className="truncate text-sm font-medium">Certificate of Attendance</span>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:flex">
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:shrink-0">
           <Button variant="outline" size="sm" className="h-10" onClick={() => window.print()}>
             <Printer className="mr-1.5 h-4 w-4" />
             Print
@@ -91,9 +92,9 @@ export function Certificate() {
             Download
           </Button>
         </div>
-      </div>
+      </FadeIn>
       <div className="flex flex-1 items-start justify-center overflow-x-auto p-3 sm:items-center sm:p-6 print:p-0">
-        <div className="w-full min-w-[320px] max-w-[900px]">
+        <FadeIn delay={0.12} className="w-full min-w-[320px] max-w-[900px]">
           <CertificateView
             name={data.name}
             eventTitle={data.eventTitle}
@@ -102,7 +103,7 @@ export function Certificate() {
             registrationId={data.registrationId}
             template={data.template}
           />
-        </div>
+        </FadeIn>
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { Search } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { PageMotion } from "@/components/PageMotion";
 import { PublicBottomBar } from "@/components/PublicBottomBar";
 import { cn } from "@/lib/utils";
 
@@ -18,18 +20,18 @@ export function PublicHeader({
           : "bg-white/90 border-b backdrop-blur-xl",
       )}
     >
-      <div className="container mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
-        <Link to="/" onClick={onHome} className="flex min-w-0 items-center gap-3">
+      <div className="flex w-full items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
+        <Link to="/" onClick={onHome} className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           <img
             src="/aitle-logo.png"
             alt="AiTLE"
-            className={cn("h-8 w-auto", transparent && "brightness-0 invert")}
+            className={cn("h-7 w-auto shrink-0 sm:h-8", transparent && "brightness-0 invert")}
           />
-          <div className="hidden min-w-0 sm:block">
-            <div className="text-sm font-semibold leading-tight">AiTLE Events</div>
+          <div className="min-w-0">
+            <div className="truncate text-sm font-semibold leading-tight">AiTLE Events</div>
             <div
               className={cn(
-                "truncate text-[11px]",
+                "hidden truncate text-[11px] sm:block",
                 transparent ? "text-white/70" : "text-muted-foreground",
               )}
             >
@@ -37,32 +39,27 @@ export function PublicHeader({
             </div>
           </div>
         </Link>
-        <nav className="hidden items-center gap-1 text-sm md:flex">
-          <Link
-            to="/"
-            className={cn(
-              "rounded-lg px-3 py-2 transition-colors",
-              transparent ? "hover:bg-white/10" : "text-muted-foreground hover:bg-muted hover:text-foreground",
-            )}
-          >
-            Events
-          </Link>
+        <nav className="flex shrink-0 items-center gap-1.5 sm:gap-2 text-sm">
           <Link
             to="/attendance-lookup"
             className={cn(
-              "rounded-lg px-3 py-2 transition-colors",
-              transparent ? "hover:bg-white/10" : "text-muted-foreground hover:bg-muted hover:text-foreground",
+              "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-2 transition-colors sm:px-3",
+              transparent
+                ? "hover:bg-white/10"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
             )}
+            aria-label="My Attendance"
           >
-            Attendance
+            <Search className="h-4 w-4 shrink-0" />
+            <span className="hidden sm:inline">My Attendance</span>
           </Link>
           <Link
             to="/admin"
             className={cn(
-              "rounded-lg px-3 py-2 font-medium transition-colors",
+              "rounded-xl px-3 py-2 font-medium transition duration-200 hover:-translate-y-0.5 sm:px-3.5",
               transparent
                 ? "bg-white text-navy-950 hover:bg-white/90"
-                : "bg-primary text-primary-foreground hover:bg-primary/90",
+                : "border border-border bg-white text-foreground hover:border-primary/30 hover:bg-muted",
             )}
           >
             Admin
@@ -77,15 +74,26 @@ export function PublicShell({
   children,
   transparentHeader = false,
   className,
+  animate = true,
 }: {
   children: React.ReactNode;
   transparentHeader?: boolean;
   className?: string;
+  /** When false, skip shell-level enter (pages with custom staggered motion). */
+  animate?: boolean;
 }) {
+  const location = useLocation();
+
   return (
     <div className={cn("page-shell", className)}>
       <PublicHeader transparent={transparentHeader} />
-      {children}
+      {animate ? (
+        <PageMotion key={location.pathname} className="min-w-0 flex-1">
+          {children}
+        </PageMotion>
+      ) : (
+        children
+      )}
       <PublicBottomBar />
     </div>
   );

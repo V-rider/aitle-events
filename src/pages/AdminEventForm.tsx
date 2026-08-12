@@ -87,7 +87,7 @@ export function AdminEventForm() {
   }
 
   return (
-    <form className="space-y-6 pb-8" onSubmit={submit}>
+    <form className="stagger-children space-y-6 pb-8" onSubmit={submit}>
       <div>
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
           {isEdit ? "Edit Event" : "Create Event"}
@@ -96,7 +96,7 @@ export function AdminEventForm() {
           Set up a new event and its registration form
         </p>
       </div>
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader>
           <CardTitle>Event Details</CardTitle>
         </CardHeader>
@@ -173,7 +173,7 @@ export function AdminEventForm() {
         </CardContent>
       </Card>
 
-      <Card className="rounded-2xl shadow-sm">
+      <Card className="motion-card rounded-2xl shadow-sm">
         <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <CardTitle>Registration Form Fields</CardTitle>

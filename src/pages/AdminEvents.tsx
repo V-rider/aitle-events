@@ -32,13 +32,13 @@ export function AdminEvents() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-children space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Events</h1>
           <p className="text-sm text-muted-foreground">Manage all your events</p>
         </div>
-        <Button className="h-11 w-full sm:w-auto" asChild>
+        <Button className="h-11 w-full transition duration-200 hover:-translate-y-0.5 sm:w-auto" asChild>
           <Link to="/admin/events/create">+ Create Event</Link>
         </Button>
       </div>
@@ -51,7 +51,7 @@ export function AdminEvents() {
         <>
           <div className="space-y-3 lg:hidden">
             {events.map((event) => (
-              <div key={event.id} className="rounded-2xl border bg-white p-4 shadow-sm">
+              <div key={event.id} className="motion-card rounded-2xl border bg-white p-4 shadow-sm">
                 <Link to={`/admin/events/${event.id}`} className="block font-semibold leading-snug">
                   {event.title}
                 </Link>
@@ -84,35 +84,39 @@ export function AdminEvents() {
             ))}
           </div>
 
-          <div className="hidden overflow-hidden rounded-2xl border bg-white shadow-sm lg:block">
-            <table className="w-full text-sm">
+          <div className="motion-card hidden overflow-x-auto rounded-2xl border bg-white shadow-sm lg:block">
+            <table className="w-full table-fixed text-sm">
               <thead className="border-b text-left text-muted-foreground">
                 <tr>
-                  <th className="px-4 py-3 font-medium">Event</th>
-                  <th className="px-4 py-3 font-medium">Date</th>
-                  <th className="px-4 py-3 font-medium">Location</th>
-                  <th className="px-4 py-3 font-medium">Status</th>
-                  <th className="px-4 py-3 font-medium">Actions</th>
+                  <th className="w-[36%] px-4 py-3 font-medium">Event</th>
+                  <th className="w-[20%] px-4 py-3 font-medium">Date</th>
+                  <th className="w-[18%] px-4 py-3 font-medium">Location</th>
+                  <th className="w-[10%] px-4 py-3 font-medium">Status</th>
+                  <th className="w-[16%] px-4 py-3 font-medium">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {events.map((event) => (
-                  <tr key={event.id} className="border-b last:border-0">
-                    <td className="px-4 py-3">
-                      <Link to={`/admin/events/${event.id}`} className="font-medium hover:underline">
+                  <tr key={event.id} className="border-b last:border-0 transition-colors hover:bg-muted/40">
+                    <td className="px-4 py-3 align-top">
+                      <Link
+                        to={`/admin/events/${event.id}`}
+                        className="line-clamp-2 font-medium leading-snug hover:underline"
+                        title={event.title}
+                      >
                         {event.title}
                       </Link>
                     </td>
-                    <td className="whitespace-nowrap px-4 py-3 text-muted-foreground">
+                    <td className="px-4 py-3 align-top text-muted-foreground">
                       {event.dateLabel}
                     </td>
-                    <td className="max-w-xs truncate px-4 py-3 text-muted-foreground">
+                    <td className="truncate px-4 py-3 align-top text-muted-foreground" title={event.location || undefined}>
                       {event.location || "—"}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 align-top">
                       {event.published ? <Badge>Published</Badge> : <Badge variant="outline">Draft</Badge>}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 align-top">
                       <div className="flex items-center gap-1">
                         <a href={`/events/${event.slug}`} target="_blank" rel="noreferrer">
                           <Button variant="ghost" size="icon">

@@ -22,7 +22,7 @@ export function AdminDashboard() {
   if (!stats) return <div className="text-muted-foreground">Loading…</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-children space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">Dashboard</h1>
         <p className="text-sm text-muted-foreground sm:text-base">
@@ -35,7 +35,7 @@ export function AdminDashboard() {
         <StatCard label="Attendance Rate" value={`${stats.attendanceRate}%`} icon={LineChart} />
       </div>
 
-      <section className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
+      <section className="motion-card rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
         <h2 className="text-lg font-semibold">Recent Events</h2>
         <div className="mt-3 space-y-2">
           {stats.recent.length === 0 ? (
@@ -63,16 +63,20 @@ export function AdminDashboard() {
         </div>
       </section>
 
-      <section className="rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
+      <section className="motion-card rounded-2xl border bg-white p-4 shadow-sm sm:p-6">
         <h2 className="text-lg font-semibold">Quick Actions</h2>
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-          <Button className="h-11" asChild>
+          <Button className="h-11 transition duration-200 hover:-translate-y-0.5" asChild>
             <Link to="/admin/events/create">
               <CalendarDays className="h-4 w-4" />
               Create Event
             </Link>
           </Button>
-          <Button variant="outline" className="h-11" asChild>
+          <Button
+            variant="outline"
+            className="h-11 transition duration-200 hover:-translate-y-0.5"
+            asChild
+          >
             <Link to="/admin/events">Manage Events</Link>
           </Button>
         </div>
@@ -91,7 +95,7 @@ function StatCard({
   icon: typeof Users;
 }) {
   return (
-    <div className="rounded-2xl border bg-white p-5 shadow-sm">
+    <div className="motion-card rounded-2xl border bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm text-muted-foreground">{label}</p>

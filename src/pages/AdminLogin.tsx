@@ -55,9 +55,6 @@ export function AdminLogin() {
               </Button>
             ) : (
               <form className="space-y-3" onSubmit={devLogin}>
-                <p className="text-sm text-muted-foreground">
-                  Google OAuth is not configured. Use an invited admin email for local sign-in.
-                </p>
                 <div className="space-y-1.5">
                   <Label htmlFor="email">Admin email</Label>
                   <Input
@@ -67,7 +64,7 @@ export function AdminLogin() {
                     className="h-11"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="jasperlee016@gmail.com"
+                    placeholder="you@example.com"
                   />
                 </div>
                 <Button

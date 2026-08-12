@@ -12,7 +12,7 @@
     {
       "binding": "DB",
       "database_name": "aitle-events",
-      "database_id": "local-aitle-events",
+      "database_id": "0797388d-e196-40af-ab78-1b98bea18922",
       "migrations_dir": "migrations"
     }
   ]

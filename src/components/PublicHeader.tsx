@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PageMotion } from "@/components/PageMotion";
 import { PublicBottomBar } from "@/components/PublicBottomBar";
@@ -11,13 +12,28 @@ export function PublicHeader({
   onHome?: () => void;
   transparent?: boolean;
 }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 1);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <header
       className={cn(
         "sticky top-0 z-30 no-print",
         transparent
-          ? "bg-navy-950/70 text-white border-b border-white/10 backdrop-blur-xl"
-          : "bg-white/90 border-b backdrop-blur-xl",
+          ? cn(
+              "bg-navy-950 text-white backdrop-blur-xl",
+              scrolled ? "border-b border-white/10" : "border-b border-transparent",
+            )
+          : cn(
+              "bg-white",
+              scrolled ? "border-b border-border" : "border-b border-transparent",
+            ),
       )}
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6">

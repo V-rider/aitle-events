@@ -134,7 +134,7 @@ export function Home() {
         </div>
       </div>
 
-      <footer className="hidden border-t bg-white md:block">
+      <footer className="hidden bg-white md:block">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-6 sm:px-6">
           <Link to="/" className="flex min-w-0 items-center gap-3">
             <img src="/aitle-logo.png" alt="AiTLE" className="h-8 w-auto shrink-0" />

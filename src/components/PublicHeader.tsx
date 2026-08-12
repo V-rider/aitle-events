@@ -20,7 +20,7 @@ export function PublicHeader({
           : "bg-white/90 border-b backdrop-blur-xl",
       )}
     >
-      <div className="flex w-full items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6">
         <Link to="/" onClick={onHome} className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           <img
             src="/aitle-logo.png"

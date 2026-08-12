@@ -54,7 +54,7 @@ export function Home() {
         <div className="pointer-events-none absolute -left-24 top-10 h-64 w-64 rounded-full bg-sky-soft/60 blur-3xl hero-glow" />
         <div className="pointer-events-none absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-accent/50 blur-3xl hero-orb" />
 
-        <div className="relative w-full max-w-5xl px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
+        <div className="relative mx-auto w-full max-w-6xl px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16">
           <div className="animate-fade-up inline-flex items-center rounded-full border border-border/80 bg-white/80 px-3.5 py-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur sm:text-sm">
             AiTLE · Event Registration Platform
           </div>
@@ -92,18 +92,18 @@ export function Home() {
       </section>
 
       <section className="border-b border-border/70 bg-white">
-        <div className="w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-3 sm:gap-6">
+        <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-12">
+          <div className="grid gap-8 sm:grid-cols-3 sm:gap-8">
             {FEATURES.map((feature, index) => (
               <div
                 key={feature.title}
-                className="animate-fade-up flex gap-3 sm:flex-col sm:gap-3.5"
+                className="animate-fade-up flex gap-3"
                 style={{ animationDelay: `${0.28 + index * 0.1}s` }}
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-soft text-primary">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-soft text-primary">
                   <feature.icon className="h-5 w-5" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h2 className="text-sm font-semibold text-foreground sm:text-base">{feature.title}</h2>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                     {feature.description}
@@ -116,7 +116,7 @@ export function Home() {
       </section>
 
       <div className="bg-[#f7f9fc]">
-        <div className="w-full max-w-5xl space-y-12 px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl space-y-12 px-4 py-12 sm:px-6 sm:py-14">
           <EventSection
             id="upcoming"
             title="Upcoming Events"
@@ -135,7 +135,7 @@ export function Home() {
       </div>
 
       <footer className="hidden border-t bg-white md:block">
-        <div className="flex w-full items-center justify-between gap-4 px-4 py-6 sm:px-6 lg:px-8">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-6 sm:px-6">
           <Link to="/" className="flex min-w-0 items-center gap-3">
             <img src="/aitle-logo.png" alt="AiTLE" className="h-8 w-auto shrink-0" />
             <div className="min-w-0">

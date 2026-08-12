@@ -1,0 +1,47 @@
+{
+  "name": "aitle-events",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "types": "wrangler types",
+    "db:migrate:local": "wrangler d1 migrations apply aitle-events --local",
+    "db:seed:local": "wrangler d1 execute aitle-events --local --file=./migrations/0002_seed.sql",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-label": "^2.1.8",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-switch": "^1.2.6",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "hono": "^4.11.3",
+    "html-to-image": "^1.11.13",
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.13.0",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.21.2",
+    "@cloudflare/workers-types": "latest",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "tailwindcss": "^4.1.18",
+    "typescript": "~5.9.3",
+    "vite": "^8.2.0",
+    "wrangler": "^4.45.0"
+  }
+}

@@ -1,0 +1,16 @@
+# Copy to .dev.vars for local secrets. Never commit the real file.
+SESSION_SECRET=change-me-to-a-long-random-string
+
+# Optional Google OAuth (if omitted, admin login uses invited-email local sign-in)
+# GOOGLE_CLIENT_ID=
+# GOOGLE_CLIENT_SECRET=
+# APP_URL=http://localhost:5173
+
+# Email (Resend) — registration confirmations
+# RESEND_API_KEY=re_xxx
+# RESEND_FROM=AiTLE Events <noreply@yourdomain.com>
+
+# Optional WhatsApp Cloud API (Meta, not Twilio)
+# WHATSAPP_TOKEN=
+# WHATSAPP_PHONE_NUMBER_ID=
+# WHATSAPP_TEMPLATE_NAME=registration_confirm

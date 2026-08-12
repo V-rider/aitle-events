@@ -54,7 +54,7 @@ export function Home() {
         <div className="pointer-events-none absolute -left-24 top-10 h-64 w-64 rounded-full bg-sky-soft/60 blur-3xl hero-glow" />
         <div className="pointer-events-none absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-accent/50 blur-3xl hero-orb" />
 
-        <div className="relative container mx-auto max-w-5xl px-4 pb-14 pt-12 sm:pb-20 sm:pt-16">
+        <div className="relative w-full max-w-5xl px-4 pb-14 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
           <div className="animate-fade-up inline-flex items-center rounded-full border border-border/80 bg-white/80 px-3.5 py-1 text-xs font-medium text-muted-foreground shadow-sm backdrop-blur sm:text-sm">
             AiTLE · Event Registration Platform
           </div>
@@ -92,7 +92,7 @@ export function Home() {
       </section>
 
       <section className="border-b border-border/70 bg-white">
-        <div className="container mx-auto max-w-5xl px-4 py-10 sm:py-12">
+        <div className="w-full max-w-5xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-3 sm:gap-6">
             {FEATURES.map((feature, index) => (
               <div
@@ -116,7 +116,7 @@ export function Home() {
       </section>
 
       <div className="bg-[#f7f9fc]">
-        <div className="container mx-auto max-w-5xl space-y-12 px-4 py-12 sm:py-14">
+        <div className="w-full max-w-5xl space-y-12 px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
           <EventSection
             id="upcoming"
             title="Upcoming Events"
